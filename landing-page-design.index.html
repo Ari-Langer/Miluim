@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>משפחה בצמיחה - ייעוץ וליווי כלכלי מותאם אישית</title>
+    <style>
+        :root {
+            --primary-color: #19aa92; /* טורקיז מהלוגו */
+            --secondary-color: #1e3b5a; /* כחול כהה מהלוגו */
+            --accent-color: #f7f7f7; /* רקע בהיר */
+            --text-color: #333333;
+            --light-gray: #f0f0f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Heebo', Arial, sans-serif;
+        }
+        
+        body {
+            direction: rtl;
+            text-align: right;
+            color: var(--text-color);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 180px;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: var(--secondary-color);
+        }
+        
+        .services {
+            background-color: var(--accent-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        
+        .service-icon {
+            background-color: var(--primary-color);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .service-icon i {
+            font-size: 3rem;
+            color: white;
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-content h2 {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .testimonials {
+            background-color: var(--accent-color);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-color);
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            right: -10px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        .reserve-miluim {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .reserve-miluim h2 {
+            color: white;
+        }
+        
+        .reserve-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin: 0 auto;
+            max-width: 800px;
+        }
+        
+        .reserve-box h3 {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .reserve-box p {
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+        
+        .reserve-details {
+            background-color: var(--light-gray);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .process {
+            background-color: white;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin: 50px 0;
+            position: relative;
+        }
+        
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: var(--primary-color);
+            z-index: 1;
+        }
+        
+        .step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .step-number {
+            width: 100px;
+            height: 100px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .step-title {
+            font-size: 1.3rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .contact {
+            background-color: var(--accent-color);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            margin-left: 20px;
+        }
+        
+        .contact-text h4 {
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+        
+        .association {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        
+        .association-logo {
+            width: 150px;
+            margin: 0 20px;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                margin: 0;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+            
+            .step {
+                margin-bottom: 40px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <img src="/api/placeholder/180/70" alt="משפחה בצמיחה - לוגו" class="logo">
+            <a href="#contact" class="cta-button">קביעת ייעוץ ראשוני חינם</a>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>פותחים את הדלת לעתיד כלכלי איתן</h1>
+            <p>ליווי וייעוץ כלכלי מותאם אישית לזוגות צעירים ומשפחות מהציבור הדתי-לאומי</p>
+            <a href="#contact" class="cta-button">לפגישת ייעוץ ראשונה ללא עלות</a>
+        </div>
+    </section>
+    
+    <section class="section services">
+        <div class="container">
+            <h2 class="section-title">השירותים שלנו</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="/api/placeholder/64/64" alt="ליווי כלכלי">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">ליווי כלכלי מותאם אישית</h3>
+                        <p>תהליך מקיף של "מקצה לקצה" הכולל מיפוי מצב קיים, ניתוח, בניית תכנית כלכלית וליווי ליישומה</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="/api/placeholder/64/64" alt="מיפוי ביטוחי">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">מיפוי מצב ביטוחי</h3>
+                        <p>סקירה מקיפה של המצב הביטוחי שלכם וזיהוי פערים, כפילויות וחסכון אפשרי בעלויות</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="/api/placeholder/64/64" alt="מיפוי פיננסי">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">מיפוי מצב פיננסי</h3>
+                        <p>ניתוח מעמיק של הנכסים, ההתחייבויות והתזרים החודשי שלכם לבניית תמונה פיננסית מלאה</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="/api/placeholder/64/64" alt="סדנא לכלכלת המשפחה">
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">סדנא לכלכלת המשפחה</h3>
+                        <p>סדנא חווייתית ומעשית המעניקה כלים פרקטיים לניהול כלכלי נבון של משק הבית</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container about">
+            <div class="about-image">
+                <img src="/api/placeholder/500/300" alt="ארי, יועץ כלכלי">
+            </div>
+            <div class="about-content">
+                <h2>מי אני?</h2>
+                <p>שמי ארי, יועץ ומאמן מוסמך לכלכלת המשפחה המתמחה בליווי יחידים, זוגות צעירים ומשפחות מהציבור הדתי-לאומי והחרדי-לאומי.</p>
+                <p>כחבר באיגוד היועצים והמאמנים לכלכלת המשפחה בישראל, מוסמך תכנית להכשרת מאמנים בהתמחות כלכלת המשפחה וראש צוות יחידת הליווי של ארגון פעמונים, אני מביא ניסיון עשיר ומקצועיות גבוהה.</p>
+                <p>כחלק מהקהילה הדתית-לאומית, אני מכיר מקרוב את האתגרים והמאפיינים הייחודיים שלכם ויודע להתאים פתרונות שמשתלבים עם אורח החיים והערכים שלכם.</p>
+                <a href="#contact" class="cta-button">לייעוץ ראשוני חינם</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section reserve-miluim">
+        <div class="container">
+            <h2 class="section-title">הטבה מיוחדת לחיילי מילואים</h2>
+            <div class="reserve-box">
+                <h3>זכאים להחזר של עד 1,500 ש"ח עבור ייעוץ כלכלי!</h3>
+                <p>אם שירתת במילואים לתקופה של לפחות 30 ימים בשנת 2025, אתה זכאי להחזר כספי משמעותי עבור הייעוץ הכלכלי שלנו.</p>
+                
+                <div class="reserve-details">
+                    <p><strong>תנאי זכאות:</strong></p>
+                    <ul>
+                        <li>ביצוע לפחות 30 ימי שמ"פ בצו 8 בשנת 2025</li>
+                        <li>למשרתים במערך הלוחם (יעוד יחידה 0-2): החזר עד 2,500 ש"ח</li>
+                        <li>למשרתים ביתר היחידות: החזר עד 1,000 ש"ח</li>
+                        <li>ניתן לנצל עד סוף 2027</li>
+                        <li>אפשר להגיש בפעימות ולא להמתין עד לסכום המלא</li>
+                    </ul>
+                </div>
+                
+                <p>זוהי הזדמנות מצוינת לקבל ליווי כלכלי מקצועי שיעזור לך ולמשפחתך לבנות עתיד פיננסי יציב יותר!</p>
+                <a href="#contact" class="cta-button">לניצול ההטבה - צור קשר עכשיו</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section process">
+        <div class="container">
+            <h2 class="section-title">התהליך שלנו</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">פגישת ייעוץ ראשונית חינם</h3>
+                    <p>היכרות, מיפוי ראשוני של המצב הקיים והבנת הצרכים והיעדים שלכם</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">יצירת מאזן ומיפוי מצב קיים</h3>
+                    <p>ניתוח מעמיק של המצב הכלכלי הנוכחי והבנת נקודות החוזק והחולשה</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">בניית תכנית כלכלית</h3>
+                    <p>יצירת תכנית מותאמת אישית ל-5-10 השנים הקרובות בהתאם ליעדים שהוגדרו</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">כלים למעקב ובקרה</h3>
+                    <p>הענקת כלים פרקטיים ליישום, מעקב ובקרה של התכנית בטווח הארוך</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">לקוחות מספרים</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        יוזמה מהממת של ארי! רוצה להוסיף שהפגישה הזו טובה לכל משפחה.. יש כאן ממש מתנה. רלוונטי לכל מצב כלכלי.. גם אם הוא מאתגר וגם אם המצב שלכם אחלה לפגישה הזו יש המון מה להוסיף לכם. ארי פותח ומנגיש את עולם הכלכלי ונותן את הכלים שיאפשרו לכם אחר כך לייעל את הכספים שלכם.
+                    </div>
+                    <div class="testimonial-author">- משפחה שנעזרה בייעוץ ראשוני</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        מצטרפת לכל מילה! ארי נפגש איתנו לפגישה והכל בנחת ומקצועיות. נתן הרבה ידע והכוונה נחוצים לחיים של נחת כלכלי. ממליצים ביותר לקפוץ על ההצעה!!
+                    </div>
+                    <div class="testimonial-author">- זוג צעיר שקיבל ייעוץ</div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        ערב טוב ארי. חשוב לנו לכתוב לך באופן אישי תודה גדולה על ליווי ופגישת יעוץ בצורה מקצועית. נתת לנו ידע חשוב ומשמעותי. השיקוף של המצב הכלכלי האמיתי שלנו עזר מאד וגם העצות לגבי הצעדים שישפרו את מצבנו בעתיד.
+                    </div>
+                    <div class="testimonial-author">- משפחה בתהליך ליווי</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">צור קשר לפגישת ייעוץ ראשונה ללא עלות</h2>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <form action="#" method="POST" id="contactForm">
+                        <div class="form-group">
+                            <label for="name">שם מלא</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">טלפון</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">דוא"ל</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">הודעה (אופציונלי)</label>
+                            <textarea id="message" name="message" class="form-control" rows="4"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="cta-button">שליחה לקביעת פגישה</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <img src="/api/placeholder/24/24" alt="WhatsApp">
+                        </div>
+                        <div class="contact-text">
+                            <h4>WhatsApp</h4>
+                            <p><a href="https://wa.me/972527204654">052-720-4654</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <img src="/api/placeholder/24/24" alt="Email">
+                        </div>
+                        <div class="contact-text">
+                            <h4>דוא"ל</h4>
+                            <p><a href="mailto:family.prosperity22@gmail.com">family.prosperity22@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="association">
+                        <img src="/api/placeholder/150/80" alt="איגוד היועצים והמאמנים לכלכלת המשפחה בישראל" class="association-logo">
+                        <img src="/api/placeholder/150/80" alt="ארגון פעמונים" class="association-logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <h3>משפחה בצמיחה</h3>
+            <p>ליווי וייעוץ כלכלי מותאם אישית לזוגות צעירים ומשפחות</p>
+            <div class="cta-section">
+                <p>פותחים יחד את הדלת לעתיד כלכלי איתן</p>
+                <a href="#contact" class="cta-button">לייעוץ ראשוני חינם</a>
+            </div>
+            <p class="copyright">&copy; 2025 כל הזכויות שמורות למשפחה בצמיחה</p>
+        </div>
+    </footer>
+    
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('הפרטים נשלחו בהצלחה! ניצור איתך קשר בהקדם לתיאום פגישת ייעוץ ראשונית.');
+        });
+    </script>
+</body>
+</html>
